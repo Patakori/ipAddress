@@ -11,7 +11,10 @@ export const Container = styled.div`
     height: 18.5rem;
     border-radius: 20px;
 
+    position: absolute;
     transform: translateY(-8.125rem);
+
+    z-index: 20;
 
     h2 {
         color: var(--background-card);

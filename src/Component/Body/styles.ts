@@ -7,3 +7,7 @@ export const Container = styled.div`
     background: black;
     height: 100vh ;
 `
+export const MapContainer = styled.div`
+    height: 300px ;
+    width: 300px;
+`

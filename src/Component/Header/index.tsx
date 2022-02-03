@@ -9,13 +9,13 @@ import { Context } from "../../hooks/Context";
 
 export function Header(){
     
-    const { ipAdress, setIpAdress, handleSubmit}:any = useContext(Context) 
+    const { ipAddress, setIpAddress, handleSubmit}:any = useContext(Context) 
 
     return(
         <Container>
             <h1>IP Address Tracker</h1>
             <div>
-                <input type="text" value={ipAdress} onChange={e => setIpAdress(e.target.value)}/>
+                <input type="text" value={ipAddress} onChange={e => setIpAddress(e.target.value)}/>
                 <button onClick={handleSubmit}>
                     <FiChevronRight color="white" fontSize={30}/>
                 </button>

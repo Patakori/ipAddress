@@ -31,4 +31,21 @@ export const Container = styled.div`
         
     }
 
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 0.875rem;
+
+        h3 {
+            font-size: 1rem;
+        }
+
+        h4 {
+            font-size: .6rem;
+            font-weight: 500;
+            margin-top: 0.20rem;
+        }
+    }
+
 `

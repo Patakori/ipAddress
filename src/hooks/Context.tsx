@@ -1,3 +1,4 @@
+import { latLng } from 'leaflet'
 import { createContext, ReactNode, useState, useEffect } from 'react'
 
 interface ContextProvider {
@@ -9,7 +10,10 @@ export interface ResultsProps {
     location:{
         region: string;
         country: string;
+        city: string;
         timezone: string;
+        lat: number;
+        lng:number;
     };
     isp: string;
 }
@@ -19,7 +23,10 @@ const initialState : ResultsProps= {
     location:{
         region: '',
         country: '',
+        city:'',
         timezone: '',
+        lat: -23.5500666,
+        lng: -46.6332549,
     },
     isp: ''
 }
@@ -29,32 +36,33 @@ export const Context= createContext({})
 export function ContextProvider({children}: ContextProvider){
 
 const [results, setResults] = useState <ResultsProps>(initialState)
-const [ipAdress, setIpAdress] = useState('')
-    
-    useEffect(()=>{
-        const getInitialData = async () => {
-            const response = await fetch (`https://geo.ipify.org/api/v2/country?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&ipAddress=`);
-            const data = await response.json();        
-            setResults(data); 
+const [ipAddress, setIpAddress] = useState('')
 
-        }
-        getInitialData() 
-        
-    }, [])
+    async function getInitialData () {
+        const response = await fetch (`https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&ipAddress=`);
+        const data = await response.json();        
+        setResults(data);
 
-    
+    }
 
     async function handleSubmit(){
-        const response = await fetch (`https://geo.ipify.org/api/v1?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&ipAddress=${ipAdress}`);
+        const response = await fetch (`https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.NEXT_PUBLIC_API_KEY}&ipAddress=${ipAddress}`);
         const data = await response.json();
-        setResults(data)
+        setResults(data);
+        setIpAddress('')
+
     } 
+
+    useEffect(()=>{
+        getInitialData() 
+    }, [])
 
     return(
         <Context.Provider value={{
+            getInitialData:getInitialData,
             handleSubmit: handleSubmit,
-            ipAdress,
-            setIpAdress,
+            ipAddress,
+            setIpAddress,
             results,
             setResults
         }}>

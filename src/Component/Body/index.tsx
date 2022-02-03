@@ -8,7 +8,6 @@ import dynamic from "next/dynamic";
 const Map = dynamic (() => import('../Map'), {ssr: false})
 
 export function Body(){
-    const defaultPosition = [ -23.5500666, -46.6332549]
 
     const { results }:any = useContext(Context)
 
@@ -16,7 +15,7 @@ export function Body(){
         <Container>
                 <Results />
 
-                <Map defaultPosition={defaultPosition}/>
+                <Map location={[results.location?.lat , results.location?.lng]}/>
                 
         </Container>
     )

@@ -14,7 +14,10 @@ export function Results(){
             <h2>IP ADDRESS</h2>
             <p>{results.ip}</p>
             <h2>LOCATION</h2>
-            <p>{results.location?.region}, {results.location?.country}</p>
+            <div>
+                <h3>{results.location?.city}</h3>
+                <h4>{results.location?.region}, {results.location?.country}</h4>
+            </div>
             <h2>TIMEZONE</h2>
             <p>UTC{results.location?.timezone}</p>
             <h2>ISP</h2>

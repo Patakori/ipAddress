@@ -12,8 +12,6 @@ import { Context } from '../../hooks/Context';
 
 const Map = ({location}) => {
 
-  
-
 //responsavel pelo mapa ir até o ip selecionado
 
 const [map, setMap] = useState(null)
@@ -39,16 +37,12 @@ const [map, setMap] = useState(null)
       },    
     })
 
-
-  
     return position === null ? null : (
       <Marker position={position}> 
         <Popup>You are here</Popup>
       </Marker>
     )
   }
-
-
 
   //inserir um icone svg
 
@@ -85,18 +79,3 @@ const [map, setMap] = useState(null)
 }
 
 export default memo(Map);
-
-//const [map, setMap] = useState(null)
-//
-//  function handleSetView(){
-//    if(map && location) {
-//      map.flyTo(location, 12, {
-//        duration: 4
-//      })
-//    }
-//  }
-//
-//  useEffect(()=> handleSetView, [location])
-
-
-//whenCreated={map=>setMap(map)}

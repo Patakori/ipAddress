@@ -42,6 +42,12 @@ export const Container = styled.div`
             :focus{
                 outline: none;
             }
+
+            @media (min-width: 1440px) {
+
+            width: 31.125rem;
+
+            }
         }
 
         Button{

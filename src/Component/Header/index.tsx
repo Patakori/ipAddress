@@ -15,11 +15,13 @@ export function Header(){
         <Container>
             <h1>IP Address Tracker</h1>
             <div>
-                <input type="text" value={ipAddress} onChange={e => setIpAddress(e.target.value)}/>
-                <button onClick={handleSubmit}>
-                    <FiChevronRight color="white" fontSize={30}/>
+                <input placeholder="Search for any IP address" type="text" value={ipAddress} onChange={e => setIpAddress(e.target.value)}/>
+                <button >
+                    <FiChevronRight onClick={handleSubmit} color="white" fontSize={30}/>
                 </button>
             </div>
         </Container>
     )
 }
+
+//onClick={handleSubmit}
